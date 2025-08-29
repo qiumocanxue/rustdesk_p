@@ -457,7 +457,7 @@ class _GeneralState extends State<_General> {
       return const Offstage();
     }
 
-    return _Card(title: 'Service', children: [
+    final children = <Widget>[
       Obx(() => _Button(serviceStop.value ? 'Start' : 'Stop', () {
             () async {
               serviceBtnEnabled.value = false;
@@ -468,7 +468,18 @@ class _GeneralState extends State<_General> {
               });
             }();
           }, enabled: serviceBtnEnabled.value))
-    ]);
+    ];
+    
+    // 添加安装按钮（仅在Windows且未安装时显示）
+    if (isWindows && !bind.mainIsInstalled()) {
+      children.add(
+        _Button('Install', () {
+          bind.mainGotoInstall();
+        })
+      );
+    }
+
+    return _Card(title: 'Service', children: children);
   }
 
   Widget other() {

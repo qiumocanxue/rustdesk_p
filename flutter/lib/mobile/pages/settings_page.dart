@@ -982,7 +982,7 @@ void showAbout(OverlayDialogManager dialogManager) {
               padding: EdgeInsets.symmetric(vertical: 8),
               child: Text('rustdesk.com',
                   style: TextStyle(
-                    decoration: TextDecoration.underline,
+                    decoration: TextDecoration.none,
                   )),
             )),
       ]),
