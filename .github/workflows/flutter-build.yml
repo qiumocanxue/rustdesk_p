@@ -290,6 +290,7 @@ jobs:
     runs-on: ${{ matrix.job.os }}
     # Temporarily disable this action due to additional test is needed.
     # if: false
+    if: false
     strategy:
       fail-fast: false
       matrix:
@@ -429,7 +430,8 @@ jobs:
             ./SignOutput/rustdesk-*.exe
 
   build-rustdesk-ios:
-    if: ${{ inputs.upload-artifact }}
+    # if: ${{ inputs.upload-artifact }}
+    if: false
     name: build rustdesk ios ipa
     runs-on: ${{ matrix.job.os }}
     needs: [generate-bridge]
@@ -549,6 +551,7 @@ jobs:
 
 
   build-for-macOS:
+    if: false
     name: ${{ matrix.job.target }}
     runs-on: ${{ matrix.job.os }}
     needs: [generate-bridge]
@@ -761,6 +764,7 @@ jobs:
       - build-for-windows-flutter
     runs-on: ubuntu-latest
     if: ${{ inputs.upload-artifact }}
+    # if: false
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@master
