@@ -1872,7 +1872,7 @@ jobs:
       - build-rustdesk-linux
       - build-rustdesk-linux-sciter
     runs-on: ${{ matrix.job.on }}
-    if: ${{ inputs.upload-artifact }}
+    #if: ${{ inputs.upload-artifact }}
     strategy:
       fail-fast: false
       matrix:
